@@ -66,13 +66,13 @@ Ignite by default works only in memory, to make Ignite save data in disk you nee
 to true.
 
 ```java
-    private DataStorageConfiguration getStorageConfiguration(){
-final DataStorageConfiguration storageCfg=new DataStorageConfiguration();
-        // Data would be saved on disk
-        storageCfg.getDefaultDataRegionConfiguration().setPersistenceEnabled(true);
-        log.info("Storage Persistence Enabled!");
-        return storageCfg;
-        }
+private DataStorageConfiguration getStorageConfiguration(){
+    final DataStorageConfiguration storageCfg=new DataStorageConfiguration();
+    // Data would be saved on disk
+    storageCfg.getDefaultDataRegionConfiguration().setPersistenceEnabled(true);
+    log.info("Storage Persistence Enabled!");
+    return storageCfg;
+    }
 ```
 
 ##### Schema definition
@@ -86,14 +86,14 @@ In ignite we can set different cache mode:
 You can set **Schema name** and **CacheMode** under **CacheConfiguration**:
 
 ```java
-    private CacheConfiguration getCacheConfiguration(){
-final CacheConfiguration config=new CacheConfiguration(CACHE_NAME);
-        config.setCacheMode(CacheMode.REPLICATED);
+private CacheConfiguration getCacheConfiguration(){
+    final CacheConfiguration config=new CacheConfiguration(CACHE_NAME);
+    config.setCacheMode(CacheMode.REPLICATED);
 
-        // Setting SQL schema for the cache.
-        config.setIndexedTypes(Long.class,TripInvoice.class);
-        return config;
-        }
+    // Setting SQL schema for the cache.
+    config.setIndexedTypes(Long.class,TripInvoice.class);
+    return config;
+    }
 ```
 
 #### Client mode
@@ -156,30 +156,17 @@ As we open sql console under ignite, let's create table:
 ```sql
 CREATE TABLE IF NOT EXISTS CarTolls
 (
-    idTransit
-    INTEGER
-    PRIMARY
-    KEY,
-    startTime
-    TIMESTAMP,
-    endTime
-    TIMESTAMP,
-    startGate
-    VARCHAR,
-    exitGate
-    VARCHAR,
-    mileage
-    DOUBLE,
-    accountRegTime
-    TIMESTAMP,
-    discout
-    VARCHAR,
-    discoutAmout
-    INTEGER,
-    vehicleType
-    VARCHAR,
-    pricePerVehicle
-    DOUBLE
+    idTransit INTEGER PRIMARY KEY,
+    startTime TIMESTAMP,
+    endTime TIMESTAMP,
+    startGate VARCHAR,
+    exitGate VARCHAR,
+    mileage DOUBLE,
+    accountRegTime TIMESTAMP,
+    discout VARCHAR,
+    discoutAmout INTEGER,
+    vehicleType VARCHAR,
+    pricePerVehicle DOUBLE
 ) WITH "CACHE_NAME=CarTolls, template=replicated";
 ```
 
