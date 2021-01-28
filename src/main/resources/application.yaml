@@ -1,0 +1,11 @@
+spring.cloud.stream:
+  function:
+    definition: carInvoicesConsumer
+  bindings:
+    carInvoicesConsumer-in-0:
+      destination: invoices
+  kafka:
+    binder:
+      brokers:
+        - localhost:9091
+        - localhost:9092
