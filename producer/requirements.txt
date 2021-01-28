@@ -1,0 +1,2 @@
+Faker~=5.3.0
+kafka-python
