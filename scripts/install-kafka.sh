@@ -14,7 +14,7 @@ cd vendor || exit
 if [[ -z "${KAFKA_HOME}" ]]; then
   wget https://apache.mirrors.tworzy.net/kafka/$KAFKA_VERSION/$KAFKA_FILE.tgz
   tar xvf $KAFKA_FILE.tgz || exit
-  echo "KAFKA_HOME=$INSTALL_DIR/$KAFKA_FILE" >>"$INSTALL_DIR/.env"
+  echo "KAFKA_HOME=$INSTALL_DIR/vendor/$KAFKA_FILE" >>"$INSTALL_DIR/.env"
   rm -f $KAFKA_FILE.tgz
   echo "KAFKA installed \$KAFKA_HOME saved to .env"
 else
